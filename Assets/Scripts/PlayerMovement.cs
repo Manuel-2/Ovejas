@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] CharacterController controller;
 
     [SerializeField] float speedMovement;
+    [SerializeField] float airSpeedMovement;
+    float groundSpeedMovement;
+
     [SerializeField] float jumpHeight;
     [SerializeField] float gravity = -9.81f;
 
@@ -18,13 +21,21 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
+    private void Awake()
+    {
+
+        groundSpeedMovement = speedMovement;
+    }
+
     // Update is called once per frame
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
+
         if(isGrounded && velocity.y < 0){
-            velocity.y = -2f;
+            velocity.y = -0.5f;
+            speedMovement = groundSpeedMovement;
         }
 
         
@@ -37,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            speedMovement = airSpeedMovement;
         }
 
         //applys gravity
