@@ -716,7 +716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 942081442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.87, y: 1.66, z: 5.05}
+  m_LocalPosition: {x: -4.16, y: 1.66, z: 5.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 822836633}
@@ -876,13 +876,27 @@ GameObject:
   - component: {fileID: 965220350}
   - component: {fileID: 965220349}
   - component: {fileID: 965220348}
+  - component: {fileID: 965220346}
   m_Layer: 0
   m_Name: PillowPlayer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: PillowAtack
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!65 &965220346
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965220345}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Center: {x: -0.00000023841858, y: 0.00000023841858, z: 0}
 --- !u!23 &965220348
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1107,9 +1121,10 @@ MonoBehaviour:
   launchForce: 22
   launchPoint: {fileID: 1555973337}
   playerMovement: {fileID: 1355979169}
-  playerSpeedPercentageModification: 50
+  playerSpeedPercentageModification: 85
   playerAnim: {fileID: 1355979171}
-  launchPillow: LaunchPillow
+  launchPillowTrigger: LaunchPillow
+  atackPillowTrigger: PillowAtack
 --- !u!95 &1355979171
 Animator:
   serializedVersion: 3

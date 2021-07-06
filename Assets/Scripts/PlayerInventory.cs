@@ -18,14 +18,23 @@ public class PlayerInventory : MonoBehaviour
     [Header("Animations")]
     [SerializeField] Animator playerAnim;
     [Space]
-    [SerializeField] string launchPillow;
+    [SerializeField] string launchPillowTrigger;
+    [SerializeField] string atackPillowTrigger;
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1") && hasPillow)
+
+        if (hasPillow)
         {
-            //la animacion se encarga de ejecutar la fucnion de lanzar la almohada
-            playerAnim.SetTrigger(launchPillow);
+            if (Input.GetButtonDown("Fire1"))
+            {
+                playerAnim.SetTrigger(atackPillowTrigger);
+            }
+            else if (Input.GetButtonDown("Fire2"))
+            {
+                //la animacion se encarga de ejecutar la fucnion de lanzar la almohada
+                playerAnim.SetTrigger(launchPillowTrigger);
+            }
         }
     }
 
@@ -44,7 +53,7 @@ public class PlayerInventory : MonoBehaviour
     {
         playerMovement.pillowSpeedModifier = playerSpeedPercentageModification / 100f;
 
-        playerAnim.ResetTrigger(launchPillow);
+        playerAnim.ResetTrigger(launchPillowTrigger);
 
         hasPillow = true;
         Pillow.SetActive(hasPillow);
