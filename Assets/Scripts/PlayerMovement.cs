@@ -6,9 +6,10 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
 
-    [SerializeField] float speedMovement;
+    [SerializeField] float originalSpeedMovement;
     [SerializeField] float airSpeedMovement;
-    float groundSpeedMovement;
+    public float pillowSpeedModifier;
+    float speedMovement;
 
     [SerializeField] float jumpHeight;
     [SerializeField] float gravity = -9.81f;
@@ -24,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
 
-        groundSpeedMovement = speedMovement;
+        speedMovement = originalSpeedMovement;
     }
 
     // Update is called once per frame
@@ -32,18 +33,18 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-
+        
         if(isGrounded && velocity.y < 0){
             velocity.y = -0.5f;
-            speedMovement = groundSpeedMovement;
+            speedMovement = originalSpeedMovement;
         }
 
         
 
         Vector3 movement = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
 
-        //applys the movement
-        controller.Move(movement * speedMovement * Time.deltaTime);
+        //aplica el movimiento
+        controller.Move(movement * (speedMovement * pillowSpeedModifier) * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -51,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
             speedMovement = airSpeedMovement;
         }
 
-        //applys gravity
+        //aplica la gravedad
         velocity.y += gravity * Time.deltaTime;
         
         controller.Move(velocity * Time.deltaTime);

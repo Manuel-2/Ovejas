@@ -329,7 +329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5913711800735995932, guid: c72c5700264028f4098a9fcdbabe000c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5913711800735995932, guid: c72c5700264028f4098a9fcdbabe000c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -539,7 +539,7 @@ RectTransform:
   m_Children:
   - {fileID: 1376080033}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -721,7 +721,7 @@ Transform:
   m_Children:
   - {fileID: 822836633}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &942081444
 BoxCollider:
@@ -940,7 +940,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 965220345}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.592, y: -0.389, z: 1.3329997}
+  m_LocalPosition: {x: 0.592, y: -0.389, z: 1.333}
   m_LocalScale: {x: 0.5, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 963194228}
@@ -1024,6 +1024,7 @@ GameObject:
   - component: {fileID: 1355979168}
   - component: {fileID: 1355979169}
   - component: {fileID: 1355979170}
+  - component: {fileID: 1355979171}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1046,7 +1047,7 @@ Transform:
   - {fileID: 2013433851}
   - {fileID: 2098178586}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &1355979168
 CharacterController:
@@ -1079,8 +1080,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1355979168}
-  speedMovement: 8
+  originalSpeedMovement: 8
   airSpeedMovement: 12
+  pillowSpeedModifier: 1
   jumpHeight: 2
   gravity: -20
   groundCheck: {fileID: 2098178586}
@@ -1104,6 +1106,29 @@ MonoBehaviour:
   PillowPrefab: {fileID: 5913711800735995928, guid: c72c5700264028f4098a9fcdbabe000c, type: 3}
   launchForce: 22
   launchPoint: {fileID: 1555973337}
+  playerMovement: {fileID: 1355979169}
+  playerSpeedPercentageModification: 50
+  playerAnim: {fileID: 1355979171}
+  launchPillow: LaunchPillow
+--- !u!95 &1355979171
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355979166}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 454fc42beef727948ad4b7f1486f1228, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1376080032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,7 +1299,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1469913268
 Rigidbody:
@@ -1348,7 +1373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5913711800735995932, guid: c72c5700264028f4098a9fcdbabe000c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5913711800735995932, guid: c72c5700264028f4098a9fcdbabe000c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1522,7 +1547,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1957119855
 GameObject:
@@ -1614,7 +1639,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 58.241, y: -26.034, z: 2.292}
 --- !u!1001 &1958090649
 PrefabInstance:
@@ -1818,7 +1843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5913711800735995932, guid: c72c5700264028f4098a9fcdbabe000c, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5913711800735995932, guid: c72c5700264028f4098a9fcdbabe000c, type: 3}
       propertyPath: m_LocalPosition.x
