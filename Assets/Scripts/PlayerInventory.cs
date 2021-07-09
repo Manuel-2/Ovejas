@@ -40,6 +40,7 @@ public class PlayerInventory : MonoBehaviour
             }
             else if (Input.GetButtonDown("Fire2"))
             {
+                hasPillow = false;
                 //la animacion se encarga de ejecutar la fucnion de lanzar la almohada
                 playerAnim.SetTrigger(launchPillowTrigger);
             }
@@ -71,10 +72,11 @@ public class PlayerInventory : MonoBehaviour
 
     private void TrowPillow()
     {
+       
+
         //elimina la restriccion de velocidad y permite al jugador moverse a su 100%
         playerMovement.pillowSpeedModifier = 1f;
 
-        hasPillow = false;
         Pillow.SetActive(hasPillow);
 
         //intanciar una nueva almohada
