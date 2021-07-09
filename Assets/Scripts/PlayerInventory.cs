@@ -21,6 +21,13 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] string launchPillowTrigger;
     [SerializeField] string atackPillowTrigger;
 
+    public bool isAtacking;
+
+    private void Awake()
+    {
+        isAtacking = false;
+    }
+
     private void Update()
     {
 
@@ -29,6 +36,7 @@ public class PlayerInventory : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 playerAnim.SetTrigger(atackPillowTrigger);
+                isAtacking = true;
             }
             else if (Input.GetButtonDown("Fire2"))
             {
@@ -74,6 +82,11 @@ public class PlayerInventory : MonoBehaviour
         //ejercer un impulso a esa almohada
         lauchedPillow.GetComponent<Rigidbody>().AddForce(launchPoint.forward * launchForce,ForceMode.Impulse);
 
+    }
+
+    private void endAttack()
+    {
+        isAtacking = false;
     }
 
 }
