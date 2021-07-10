@@ -31,7 +31,7 @@ public class PillowController : MonoBehaviour
         {
             isGrounded = true;
         }
-        else if (collision.gameObject.CompareTag("Enemy") && isGrounded == false)
+        else if (isGrounded == false && collision.gameObject.CompareTag("Enemy"))
         {
             //pasarle como parametros el vector con el cual sera disparado
 

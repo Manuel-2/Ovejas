@@ -5,8 +5,14 @@ using UnityEngine;
 public class DukeController : MonoBehaviour
 {
     [SerializeField] Animator animator;
-    [SerializeField] BoxCollider collider;
+    [SerializeField] CapsuleCollider collider;
     [SerializeField] Rigidbody body;
+
+    [SerializeField] GameObject pillowWeapon;
+    [SerializeField] Transform player;
+    [SerializeField] GameObject pillowPrefab;
+    [SerializeField] float dropForce;
+    [SerializeField] Transform pillowExitPoint;
 
     Rigidbody[] rigidbodies;
 
@@ -35,20 +41,27 @@ public class DukeController : MonoBehaviour
         //usa esta funcion para adminsitrar todo el proceso por ahora usala de forma rapida para aplicar las mecanicas 
         SetEnabled(true);
 
+        //ocultar la almohada que tiene equipada
+        pillowWeapon.SetActive(false);
+
+        //instanciar una nueva almohada que el jugador pueda recojer
+        GameObject pillowDroped =  Instantiate(pillowPrefab, pillowExitPoint.transform.position,Quaternion.identity);
+        //lanzar almohada con direcion al jugador
+
+        Vector3 launchDirection = new Vector3(player.position.x - this.transform.position.x, 2f,player.position.z - this.transform.position.z);
+        launchDirection = launchDirection.normalized * dropForce;
+        launchDirection.y = dropForce * 2;
+        pillowDroped.GetComponent<Rigidbody>().AddForce(launchDirection,ForceMode.Impulse);
+
         //lanzar
         StartCoroutine(launchWatanoge(launch));
     }
 
-    void LaunchBody(Vector3 launch)
-    {
-        Debug.Log("Lanzando");
-        body.AddForce(launch, ForceMode.Impulse);
-    }
     
     IEnumerator launchWatanoge(Vector3 launch)
     {
         yield return new WaitForSeconds(0.1f);
-        LaunchBody(launch);
+        body.AddForce(launch, ForceMode.Impulse);
     }
 
 }
