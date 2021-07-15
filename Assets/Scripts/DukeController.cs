@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
 
 public class DukeController : MonoBehaviour
@@ -16,11 +17,28 @@ public class DukeController : MonoBehaviour
 
     Rigidbody[] rigidbodies;
 
+    [SerializeField] string playerTag;
+    Transform target;
+    [SerializeField] NavMeshAgent agent;
+    bool isFollowingPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
+        isFollowingPlayer = true;
+        target = GameObject.FindGameObjectWithTag(playerTag).transform;
+
         rigidbodies = transform.GetComponentsInChildren<Rigidbody>();
         SetEnabled(false);
+    }
+
+    private void Update()
+    {
+        //ir a la posicion del jugador cuando este esta en un dermenidado rango
+        if (isFollowingPlayer)
+        {
+            agent.SetDestination(target.position);
+        }
     }
 
     //true para activar el ragdoll y false para desactivar
@@ -36,6 +54,10 @@ public class DukeController : MonoBehaviour
 
     public void EnemyDie(Vector3 launch)
     {
+        //deja de segir al jugador y desactiva el componente de agente
+        isFollowingPlayer = false;
+        agent.enabled = false;
+
         //desactiva transformar el hitbox en un triger
         collider.isTrigger = true;
         //usa esta funcion para adminsitrar todo el proceso por ahora usala de forma rapida para aplicar las mecanicas 
