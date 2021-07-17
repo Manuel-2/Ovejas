@@ -7,6 +7,7 @@ TagManager:
   - Pillow
   - PillowAtack
   - Enemy
+  - EnemyAtack
   layers:
   - Default
   - TransparentFX

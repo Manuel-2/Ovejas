@@ -22,10 +22,13 @@ public class DukeController : MonoBehaviour
     [SerializeField] NavMeshAgent agent;
     bool isFollowingPlayer;
 
+    bool isAlive = true;
+
     // Start is called before the first frame update
     void Start()
     {
-        isFollowingPlayer = true;
+        isAlive = true;
+        isFollowingPlayer = false;
         target = GameObject.FindGameObjectWithTag(playerTag).transform;
 
         rigidbodies = transform.GetComponentsInChildren<Rigidbody>();
@@ -35,11 +38,28 @@ public class DukeController : MonoBehaviour
     private void Update()
     {
         //ir a la posicion del jugador cuando este esta en un dermenidado rango
-        if (isFollowingPlayer)
+        if (isAlive && isFollowingPlayer)
         {
             agent.SetDestination(target.position);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if ( isAlive && other.CompareTag(playerTag))
+        {
+            isFollowingPlayer = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (isAlive && other.CompareTag(playerTag))
+        {
+            isFollowingPlayer = false;
+        }
+    }
+
 
     //true para activar el ragdoll y false para desactivar
     private void SetEnabled(bool enabled)
@@ -54,6 +74,8 @@ public class DukeController : MonoBehaviour
 
     public void EnemyDie(Vector3 launch)
     {
+        isAlive = false;
+
         //deja de segir al jugador y desactiva el componente de agente
         isFollowingPlayer = false;
         agent.enabled = false;
