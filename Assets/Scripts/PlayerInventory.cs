@@ -21,6 +21,9 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] string launchPillowTrigger;
     [SerializeField] string atackPillowTrigger;
 
+    [Header("Components References")]
+    [SerializeField] PlayerController playerController;
+    [Space]
     public bool isAtacking;
 
     private void Awake()
@@ -31,7 +34,7 @@ public class PlayerInventory : MonoBehaviour
     private void Update()
     {
 
-        if (hasPillow)
+        if (hasPillow && playerController.isAlive)
         {
             if (Input.GetButtonDown("Fire1"))
             {
