@@ -6,6 +6,7 @@ using UnityEngine;
 public class DukeController : MonoBehaviour
 {
     [SerializeField] Animator animator;
+    [SerializeField] string attackTriggerName;
     [SerializeField] CapsuleCollider collider;
     [SerializeField] Rigidbody body;
 
@@ -52,10 +53,13 @@ public class DukeController : MonoBehaviour
         //detectar si el jugador esta dentro del rago de ataque
         if ( isAttacking == false && PlayerInAttackRank())
         {
+            isFollowingPlayer = false;
             isAttacking = true;
-            //atacar al jugador xd
+            animator.SetTrigger(attackTriggerName);
+            //este invoque restablece las variables de ataque y hace que el enemigo regrese al estado de persecusión;
+            Invoke("AttackEnded", 1.27f);
+
             //el ataque en si es mover la almohada para que colisione con el jugador, una vez que eso ocurra al final de la animacino llamar un evento para que regrese al estado originial la varible isAttacking
-            Debug.Log("jugador detectado dentro del rango de ataque >:|");
         }
 
     }
@@ -76,9 +80,6 @@ public class DukeController : MonoBehaviour
         }
     }
 
-
-
-
     private bool PlayerInAttackRank()
     {
         RaycastHit hit;
@@ -89,6 +90,11 @@ public class DukeController : MonoBehaviour
         return false;
     }
 
+    private void AttackEnded()
+    {
+        isAttacking = false;
+        isFollowingPlayer = true;
+    }
     //true para activar el ragdoll y false para desactivar
     private void SetEnabled(bool enabled)
     {
