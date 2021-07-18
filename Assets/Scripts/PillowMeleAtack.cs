@@ -20,7 +20,6 @@ public class PillowMeleAtack : MonoBehaviour
         if ( canHit && other.gameObject.CompareTag(enemyTag) && playerInventory.isAtacking)
         {
             canHit = false;
-            Debug.Log("se detecto colicion");
             //xd
             Vector3 launch = new Vector3((other.transform.position.x - playerInventory.transform.position.x), 2f, (other.transform.position.z - this.transform.position.z));
             launch = launch.normalized * launchForce;

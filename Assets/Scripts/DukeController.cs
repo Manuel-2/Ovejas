@@ -24,7 +24,7 @@ public class DukeController : MonoBehaviour
     bool isFollowingPlayer;
     [SerializeField] float attackDistance;
     [SerializeField] float attackRadius;
-    bool isAttacking;
+    public bool isAttacking { get; private set; }
 
 
     bool isAlive = true;
