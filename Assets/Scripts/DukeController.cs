@@ -11,7 +11,6 @@ public class DukeController : MonoBehaviour
     [SerializeField] Rigidbody body;
 
     [SerializeField] GameObject pillowWeapon;
-    [SerializeField] Transform player;
     [SerializeField] GameObject pillowPrefab;
     [SerializeField] float dropForce;
     [SerializeField] Transform pillowExitPoint;
@@ -108,6 +107,7 @@ public class DukeController : MonoBehaviour
 
     public void EnemyDie(Vector3 launch)
     {
+        Vector3 playerPosition = GameObject.FindGameObjectWithTag(playerTag).transform.position;
         isAlive = false;
 
         //deja de segir al jugador y desactiva el componente de agente
@@ -126,7 +126,7 @@ public class DukeController : MonoBehaviour
         GameObject pillowDroped =  Instantiate(pillowPrefab, pillowExitPoint.transform.position,Quaternion.identity);
         //lanzar almohada con direcion al jugador
 
-        Vector3 launchDirection = new Vector3(player.position.x - this.transform.position.x, 2f,player.position.z - this.transform.position.z);
+        Vector3 launchDirection = new Vector3(playerPosition.x - this.transform.position.x, 2f, playerPosition.z - this.transform.position.z);
         launchDirection = launchDirection.normalized * dropForce;
         launchDirection.y = dropForce * 2;
         pillowDroped.GetComponent<Rigidbody>().AddForce(launchDirection,ForceMode.Impulse);
