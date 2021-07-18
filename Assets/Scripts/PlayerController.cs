@@ -10,12 +10,17 @@ public class PlayerController : MonoBehaviour
     public void getDamage()
     {
         healt--;
+        if(healt<= 0)
+        {
+            playerDie();
+        }
         //todo: llamar algunos efectos y darle feedback al jugador
     }
 
     void playerDie()
     {
-
+        //Todo: lanzar al jugador y activar su ragdoll
+        Debug.Log("el jugador perdio :(");
     }
 
 }

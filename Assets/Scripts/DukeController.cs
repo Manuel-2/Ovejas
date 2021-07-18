@@ -18,15 +18,21 @@ public class DukeController : MonoBehaviour
     Rigidbody[] rigidbodies;
 
     [SerializeField] string playerTag;
+    [SerializeField] LayerMask playerLayerMask;
     Transform target;
     [SerializeField] NavMeshAgent agent;
     bool isFollowingPlayer;
+    [SerializeField] float attackDistance;
+    [SerializeField] float attackRadius;
+    bool isAttacking;
+
 
     bool isAlive = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        isAttacking = false;
         isAlive = true;
         isFollowingPlayer = false;
         target = GameObject.FindGameObjectWithTag(playerTag).transform;
@@ -42,6 +48,16 @@ public class DukeController : MonoBehaviour
         {
             agent.SetDestination(target.position);
         }
+
+        //detectar si el jugador esta dentro del rago de ataque
+        if ( isAttacking == false && PlayerInAttackRank())
+        {
+            isAttacking = true;
+            //atacar al jugador xd
+            //el ataque en si es mover la almohada para que colisione con el jugador, una vez que eso ocurra al final de la animacino llamar un evento para que regrese al estado originial la varible isAttacking
+            Debug.Log("jugador detectado dentro del rango de ataque >:|");
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,6 +76,18 @@ public class DukeController : MonoBehaviour
         }
     }
 
+
+
+
+    private bool PlayerInAttackRank()
+    {
+        RaycastHit hit;
+        if(Physics.SphereCast(this.transform.position, attackRadius,transform.forward,out hit, attackDistance, playerLayerMask.value))
+        {
+            return true;
+        }
+        return false;
+    }
 
     //true para activar el ragdoll y false para desactivar
     private void SetEnabled(bool enabled)
@@ -106,6 +134,13 @@ public class DukeController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         body.AddForce(launch, ForceMode.Impulse);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Debug.DrawLine(transform.position, transform.forward * attackDistance);
+        Gizmos.DrawWireSphere(transform.position + transform.forward * attackDistance,attackRadius);
     }
 
 }
