@@ -114,9 +114,9 @@ public class DukeController : MonoBehaviour
         isFollowingPlayer = false;
         agent.enabled = false;
 
-        //desactiva transformar el hitbox en un triger
+        //transformar el hitbox(colider) en un triger
         collider.isTrigger = true;
-        //usa esta funcion para adminsitrar todo el proceso por ahora usala de forma rapida para aplicar las mecanicas 
+        //activa el ragdoll
         SetEnabled(true);
 
         //ocultar la almohada que tiene equipada
@@ -124,8 +124,8 @@ public class DukeController : MonoBehaviour
 
         //instanciar una nueva almohada que el jugador pueda recojer
         GameObject pillowDroped =  Instantiate(pillowPrefab, pillowExitPoint.transform.position,Quaternion.identity);
-        //lanzar almohada con direcion al jugador
 
+        //lanzar almohada con direcion al jugador
         Vector3 launchDirection = new Vector3(playerPosition.x - this.transform.position.x, 2f, playerPosition.z - this.transform.position.z);
         launchDirection = launchDirection.normalized * dropForce;
         launchDirection.y = dropForce * 2;

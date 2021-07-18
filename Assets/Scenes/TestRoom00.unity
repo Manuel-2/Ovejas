@@ -2865,7 +2865,6 @@ MonoBehaviour:
   collider: {fileID: 894108036}
   body: {fileID: 11338816}
   pillowWeapon: {fileID: 1678599292}
-  player: {fileID: 1355979167}
   pillowPrefab: {fileID: 5913711800735995928, guid: c72c5700264028f4098a9fcdbabe000c, type: 3}
   dropForce: 2.5
   pillowExitPoint: {fileID: 614991744}
@@ -2979,7 +2978,6 @@ MonoBehaviour:
   collider: {fileID: 943642020}
   body: {fileID: 295237256}
   pillowWeapon: {fileID: 406611433}
-  player: {fileID: 1355979167}
   pillowPrefab: {fileID: 5913711800735995928, guid: c72c5700264028f4098a9fcdbabe000c, type: 3}
   dropForce: 2.5
   pillowExitPoint: {fileID: 1649808685}
@@ -4607,7 +4605,7 @@ GameObject:
   - component: {fileID: 1678599294}
   - component: {fileID: 1678599293}
   m_Layer: 0
-  m_Name: PillowPlayer
+  m_Name: PillowWeapon
   m_TagString: PillowAtack
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

@@ -37,23 +37,10 @@ public class PillowController : MonoBehaviour
 
             Vector3 launch = new Vector3((collision.transform.position.x - this.transform.position.x),2f, (collision.transform.position.z - this.transform.position.z));
             launch = launch.normalized * launchForce;
-            //Vector3 launch = (collision.transform.position - this.transform.position).normalized * 20;
+            
+            //NOTA: cuando el enemigo muere se Desactiva el collider que detecta los daños.
             collision.gameObject.GetComponent<DukeController>().EnemyDie(launch);
 
-            
-            
-
-            /*
-            //TODO: agregar una condicional que evite que esto se ejecute si el enemigo ya se murio 
-            //TODO: obtener el componente controlador del enemigo y llamar un metodo para que este muera
-
-            Debug.Log("se ataco a un enemigo");
-            //pasar a un rigibody normal desactivado el kinematic
-            Rigidbody rigidbody = collision.gameObject.GetComponent<Rigidbody>();
-            rigidbody.isKinematic = false;
-            //efectuar una fuerza en foma de impulso
-            rigidbody.AddForce(,ForceMode.Impulse);
-            */
         }
     }
 
