@@ -21,7 +21,7 @@ public class EnemyWeapon : MonoBehaviour
         {
             canHit = false;
             //llamar el metodo del jugador para quitarle vida
-
+            other.gameObject.GetComponent<PlayerController>().getDamage();
 
             Invoke("CanHit", attackDuration);
         }
