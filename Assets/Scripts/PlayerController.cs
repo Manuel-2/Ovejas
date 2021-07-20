@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         camara.transform.position = cameraPosition.transform.position;
         camara.transform.SetParent(playerRagdoll.transform);
         //lanzar al ragdoll
-        playerRagdoll.GetComponent<Rigidbody>().AddForce((Vector3.up + Vector3.back) * 5,ForceMode.Impulse);
+        playerRagdoll.GetComponent<Rigidbody>().AddForce((Vector3.up - transform.forward) * 5,ForceMode.Impulse);
 
         //desactivar al jugador
         this.gameObject.SetActive(false);
