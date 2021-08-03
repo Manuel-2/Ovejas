@@ -17,13 +17,17 @@ public class PillowMeleAtack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag(enemyTag))
+        {
+            Debug.Log("dañado al enemigo");
+        }
+
         if ( canHit && other.gameObject.CompareTag(enemyTag) && playerInventory.isAtacking)
         {
             canHit = false;
-            //xd
             Vector3 launch = new Vector3((other.transform.position.x - playerInventory.transform.position.x), 2f, (other.transform.position.z - this.transform.position.z));
             launch = launch.normalized * launchForce;
-            other.gameObject.GetComponent<DukeController>().EnemyDie(launch);
+            other.gameObject.GetComponent<EnemyController>().EnemyDie(launch);
             Invoke("CanHit",0.2f);
         }
     }

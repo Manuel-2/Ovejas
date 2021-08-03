@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyWeapon : MonoBehaviour
 {
     [SerializeField] string playerTag;
-    [SerializeField] DukeController dukeController;
+    [SerializeField] EnemyController enemyController;
     [SerializeField] float attackDuration;
 
     bool canHit;
@@ -17,12 +17,11 @@ public class EnemyWeapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (canHit && other.gameObject.CompareTag(playerTag) && dukeController.isAttacking)
+        if (canHit && other.gameObject.CompareTag(playerTag) && enemyController.isAttacking)
         {
             canHit = false;
             //llamar el metodo del jugador para quitarle vida
             other.gameObject.GetComponent<PlayerController>().getDamage();
-
             Invoke("CanHit", attackDuration);
         }
     }

@@ -8,6 +8,7 @@ TagManager:
   - PillowAtack
   - Enemy
   - EnemyAtack
+  - Test01
   layers:
   - Default
   - TransparentFX

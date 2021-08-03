@@ -39,7 +39,7 @@ public class PillowController : MonoBehaviour
             launch = launch.normalized * launchForce;
             
             //NOTA: cuando el enemigo muere se Desactiva el collider que detecta los daños.
-            collision.gameObject.GetComponent<DukeController>().EnemyDie(launch);
+            collision.gameObject.GetComponent<EnemyController>().EnemyDie(launch);
 
         }
     }
