@@ -48,6 +48,8 @@ public class PlayerInventory : MonoBehaviour
                 playerAnim.SetTrigger(launchPillowTrigger);
             }
         }
+
+        
     }
 
     private void OnTriggerEnter(Collider other)

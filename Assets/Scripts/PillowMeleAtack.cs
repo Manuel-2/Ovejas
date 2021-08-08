@@ -15,7 +15,7 @@ public class PillowMeleAtack : MonoBehaviour
         canHit = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag(enemyTag))
         {
