@@ -15,6 +15,7 @@ public class PillowMeleAtack : MonoBehaviour
         canHit = true;
     }
 
+    /*
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag(enemyTag))
@@ -31,6 +32,7 @@ public class PillowMeleAtack : MonoBehaviour
             Invoke("CanHit",0.2f);
         }
     }
+    */
 
     private void CanHit()
     {
