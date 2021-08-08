@@ -36,12 +36,7 @@ public class PlayerInventory : MonoBehaviour
 
         if (hasPillow && playerController.isAlive)
         {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                playerAnim.SetTrigger(atackPillowTrigger);
-                isAtacking = true;
-            }
-            else if (Input.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("Fire2"))
             {
                 hasPillow = false;
                 //la animacion se encarga de ejecutar la fucnion de lanzar la almohada
