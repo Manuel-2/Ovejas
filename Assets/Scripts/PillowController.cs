@@ -39,7 +39,13 @@ public class PillowController : MonoBehaviour
             launch = launch.normalized * launchForce;
             
             //NOTA: cuando el enemigo muere se Desactiva el collider que detecta los daños.
-            collision.gameObject.GetComponent<EnemyController>().EnemyDie(launch);
+            if(collision.gameObject.name != "Watanoge")
+            {
+                collision.gameObject.GetComponent<EnemyController>().EnemyDie(launch);
+            }else if(collision.gameObject.name == "Watanoge")
+            {
+                collision.gameObject.GetComponent<WatanogeController>().EnemyDie(launch);
+            }
 
         }
     }
