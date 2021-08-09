@@ -6,7 +6,7 @@ public class WatanogeController : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody body;
-
+    [SerializeField] CapsuleCollider hitbox;
     Rigidbody[] rigidbodies;
 
     private void Awake()
@@ -32,6 +32,9 @@ public class WatanogeController : MonoBehaviour
 
         //lanzar al ragdoll
         StartCoroutine(launchWatanoge(launch));
+
+        //desactivar el collider
+        hitbox.enabled = false;
     }
 
     IEnumerator launchWatanoge(Vector3 launch)
