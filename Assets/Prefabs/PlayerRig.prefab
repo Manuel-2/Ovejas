@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 719365731880381416}
   - component: {fileID: 719365731880381415}
   - component: {fileID: 719365731880381419}
+  - component: {fileID: 1200177521}
   m_Layer: 0
   m_Name: PlayerRig
   m_TagString: Untagged
@@ -113,6 +114,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1200177521
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719365731880381414}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0882387, y: 0.2203157, z: 1}
+  m_Center: {x: -0.0052990913, y: 0.38984215, z: 0}
 --- !u!1 &719365732398141774
 GameObject:
   m_ObjectHideFlags: 0

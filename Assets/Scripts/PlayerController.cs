@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MilkShake;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class PlayerController : MonoBehaviour
     [Header("Damage Adminstration")]
     [SerializeField] Animator blink;
     [SerializeField] string triggerFallOfAnimation;
+
+    [Header("CameraShake")]
+    [SerializeField] Shaker shaker;
+    [SerializeField] ShakePreset shakePreset;
+
     public bool isAlive { get; private set; }
 
     DamageEffect damageEffect;
@@ -32,7 +38,8 @@ public class PlayerController : MonoBehaviour
         //retroceder
         healt--;
         damageEffect.ActivateDamageEfect(healt);
-        if(healt<= 0)
+        shaker.Shake(shakePreset);
+        if (healt<= 0)
         {
             playerDie();
         }
