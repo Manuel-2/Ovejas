@@ -24,8 +24,8 @@ public class PlayerController : MonoBehaviour
     public void getDamage()
     {
         //retroceder
-
         healt--;
+        GameObject.Find("DamageEffect").GetComponent<DamageEffect>().ActivateDamageEfect(healt);
         if(healt<= 0)
         {
             playerDie();
