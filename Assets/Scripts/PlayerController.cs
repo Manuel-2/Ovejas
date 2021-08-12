@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject playerRagdoll;
     [SerializeField] Transform cameraPosition;
 
+    [Header("Damage Adminstration")]
+    [SerializeField] Animator blink;
+    [SerializeField] string triggerFallOfAnimation;
     public bool isAlive { get; private set; }
 
     private void Awake()
@@ -21,25 +25,24 @@ public class PlayerController : MonoBehaviour
     {
         //retroceder
 
-
-
         healt--;
         if(healt<= 0)
         {
             playerDie();
         }
-        //todo: llamar algunos efectos y darle feedback al jugador
     }
 
     void playerDie()
     {
         //activar ragdoll
         ActivatePlayerRagdoll();
-        //TODO: desactivar el movimineto del jugador
+        //desactivar el movimineto del jugador
         playerMovement.SetActive(false);
         //desactivar el movimineto de la camara
         camara.DeactivateCameraMovement();
-        Debug.Log("el jugador perdio :(");
+        // efecto de parpadear y dormir
+        // al terminar la animacion esta llama un evento que reinicia la escena
+        blink.SetTrigger(triggerFallOfAnimation);
     }
 
     void ActivatePlayerRagdoll()
