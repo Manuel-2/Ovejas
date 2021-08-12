@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class DamageEffect : MonoBehaviour
 {
     [SerializeField] Image damageImage;
     //1 == half life | 2 == player die
     [SerializeField] Color[] colors = new Color[2];
-    [SerializeField] float exitTime;
-    float currentTime;
+    public float timeToDisapear;
 
     private void Awake()
     {
-        currentTime = 0;
         damageImage.color = new Color(damageImage.color.r, damageImage.color.g, damageImage.color.b, 0);
     }
 
@@ -28,11 +27,10 @@ public class DamageEffect : MonoBehaviour
                 damageImage.color = new Color(colors[1].r, colors[1].g, colors[1].b, 1);
                 break;
         }
-        currentTime = exitTime;
     }
 
     public void RecoverHealt()
     {
-        
+        damageImage.DOFade(0f, timeToDisapear);
     }
 }

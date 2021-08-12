@@ -5,30 +5,40 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] int healt;
+    [SerializeField] int maxHealt;
+    int healt;
     [SerializeField] GameObject playerMovement;
     [SerializeField] MouseLook camara;
     [SerializeField] GameObject playerRagdoll;
     [SerializeField] Transform cameraPosition;
+    [SerializeField] float timeToRecoverHealt;
 
     [Header("Damage Adminstration")]
     [SerializeField] Animator blink;
     [SerializeField] string triggerFallOfAnimation;
     public bool isAlive { get; private set; }
 
+    DamageEffect damageEffect;
+
     private void Awake()
     {
         isAlive = true;
+        damageEffect = GameObject.Find("DamageEffect").GetComponent<DamageEffect>();
+        healt = maxHealt;
     }
 
     public void getDamage()
     {
         //retroceder
         healt--;
-        GameObject.Find("DamageEffect").GetComponent<DamageEffect>().ActivateDamageEfect(healt);
+        damageEffect.ActivateDamageEfect(healt);
         if(healt<= 0)
         {
             playerDie();
+        }
+        else if (healt > 0){
+            //call a coroutine to start healing
+            StartCoroutine("RecoverHealt");
         }
     }
 
@@ -57,8 +67,14 @@ public class PlayerController : MonoBehaviour
 
         //desactivar al jugador
         this.gameObject.SetActive(false);
+    }
 
-
+    IEnumerator RecoverHealt()
+    {
+        yield return new WaitForSeconds(timeToRecoverHealt);
+        damageEffect.RecoverHealt();
+        yield return new WaitForSeconds(damageEffect.timeToDisapear);
+        healt = maxHealt;
     }
 
 }

@@ -455,6 +455,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 52360391}
     - target: {fileID: 627237025521514388, guid: bc7749957b81484489897ecbf7a3000b, type: 3}
+      propertyPath: maxHealt
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 627237025521514388, guid: bc7749957b81484489897ecbf7a3000b, type: 3}
       propertyPath: playerRagdoll
       value: 
       objectReference: {fileID: 1200177519}
@@ -462,6 +466,10 @@ PrefabInstance:
       propertyPath: cameraPosition
       value: 
       objectReference: {fileID: 1200177520}
+    - target: {fileID: 627237025521514388, guid: bc7749957b81484489897ecbf7a3000b, type: 3}
+      propertyPath: timeToRecoverHealt
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 627237025521514388, guid: bc7749957b81484489897ecbf7a3000b, type: 3}
       propertyPath: triggerFallOfAnimation
       value: PlayerFall
@@ -777,7 +785,7 @@ MonoBehaviour:
   colors:
   - {r: 0.13333334, g: 0.050980397, b: 0.050980397, a: 1}
   - {r: 0.2627451, g: 0, b: 0, a: 1}
-  exitTime: 3
+  timeToDisapear: 1
 --- !u!1 &279902189
 GameObject:
   m_ObjectHideFlags: 0
