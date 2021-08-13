@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public bool isAlive { get; private set; }
 
     DamageEffect damageEffect;
+    [SerializeField] AudioClip PlayerGetDamageSound;
 
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
         //retroceder
         healt--;
         damageEffect.ActivateDamageEfect(healt);
+        PlayerAudioController.sharedInstance.PlaySoundEffect(PlayerGetDamageSound);
         shaker.Shake(shakePreset);
         if (healt<= 0)
         {

@@ -8,6 +8,9 @@ public class PillowController : MonoBehaviour
     [SerializeField] float launchForce;
     bool isGrounded;
 
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip hitEffectSound;
+
     private void Awake()
     {
         GetComponent<SphereCollider>().enabled = false;
@@ -46,7 +49,7 @@ public class PillowController : MonoBehaviour
             {
                 collision.gameObject.GetComponent<WatanogeController>().EnemyDie(launch);
             }
-
+            audioSource.PlayOneShot(hitEffectSound);
         }
     }
 

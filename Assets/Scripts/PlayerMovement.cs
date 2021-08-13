@@ -18,6 +18,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float groundDistance;
     [SerializeField] LayerMask groundMask;
 
+    [SerializeField] AudioClip jumpSound;
+
+    [Header("SetpsSound System")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip StepsSound;
 
     Vector3 velocity;
     bool isGrounded;
@@ -46,10 +51,20 @@ public class PlayerMovement : MonoBehaviour
         //aplica el movimiento
         controller.Move(movement * (speedMovement * pillowSpeedModifier) * Time.deltaTime);
 
+        if(isGrounded && movement.magnitude > 0.85f && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+        else if(movement.magnitude < 0.85f || !isGrounded)
+        {
+            audioSource.Stop();
+        }
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             speedMovement = airSpeedMovement;
+            PlayerAudioController.sharedInstance.PlaySoundEffect(jumpSound);
         }
 
         //aplica la gravedad

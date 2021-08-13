@@ -26,6 +26,10 @@ public class PlayerInventory : MonoBehaviour
     [Space]
     public bool isAtacking;
 
+    [Header("sound")]
+    [SerializeField] AudioClip launchPillowSound;
+
+
     private void Awake()
     {
         isAtacking = false;
@@ -41,6 +45,7 @@ public class PlayerInventory : MonoBehaviour
                 hasPillow = false;
                 //la animacion se encarga de ejecutar la fucnion de lanzar la almohada
                 playerAnim.SetTrigger(launchPillowTrigger);
+                PlayerAudioController.sharedInstance.PlaySoundEffect(launchPillowSound);
             }
         }
 
