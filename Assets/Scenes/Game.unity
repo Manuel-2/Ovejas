@@ -1682,7 +1682,7 @@ PrefabInstance:
     - target: {fileID: 627237025521514386, guid: bc7749957b81484489897ecbf7a3000b, type: 3}
       propertyPath: launchPillowSound
       value: 
-      objectReference: {fileID: 8300000, guid: 254723bd87ada9d4daecd2a62db16822, type: 3}
+      objectReference: {fileID: 8300000, guid: 2646339c62f1bc044870af89fb55491a, type: 3}
     - target: {fileID: 627237025521514386, guid: bc7749957b81484489897ecbf7a3000b, type: 3}
       propertyPath: playerAudioSource
       value: 
@@ -1702,7 +1702,7 @@ PrefabInstance:
     - target: {fileID: 627237025521514388, guid: bc7749957b81484489897ecbf7a3000b, type: 3}
       propertyPath: PlayerGetDamageSound
       value: 
-      objectReference: {fileID: 8300000, guid: 17d9559cf70bc3743afa06b06582a3e7, type: 3}
+      objectReference: {fileID: 8300000, guid: c19d3671a9609c44ab74a86ba03a1c43, type: 3}
     - target: {fileID: 627237025521514414, guid: bc7749957b81484489897ecbf7a3000b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1754,11 +1754,11 @@ PrefabInstance:
     - target: {fileID: 627237026035067253, guid: bc7749957b81484489897ecbf7a3000b, type: 3}
       propertyPath: jumpSound
       value: 
-      objectReference: {fileID: 8300000, guid: b8da7ad91110e9a43b8130488bd9bce2, type: 3}
+      objectReference: {fileID: 8300000, guid: 54c8b0fb765ee19479a4d0a68c026ece, type: 3}
     - target: {fileID: 627237026035067253, guid: bc7749957b81484489897ecbf7a3000b, type: 3}
       propertyPath: StepsSound
       value: 
-      objectReference: {fileID: 8300000, guid: 8aef5b156af897845bfc1e93a6afb8fa, type: 3}
+      objectReference: {fileID: 8300000, guid: e6c34b5853cac8743b3dc5275011cabc, type: 3}
     - target: {fileID: 627237026035067253, guid: bc7749957b81484489897ecbf7a3000b, type: 3}
       propertyPath: audioSource
       value: 

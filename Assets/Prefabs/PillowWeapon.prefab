@@ -93,7 +93,7 @@ MonoBehaviour:
   canRecolectDelay: 0.125
   launchForce: 150
   audioSource: {fileID: 1076148602}
-  hitEffectSound: {fileID: 8300000, guid: 17d9559cf70bc3743afa06b06582a3e7, type: 3}
+  hitEffectSound: {fileID: 8300000, guid: c19d3671a9609c44ab74a86ba03a1c43, type: 3}
 --- !u!82 &1076148602
 AudioSource:
   m_ObjectHideFlags: 0
