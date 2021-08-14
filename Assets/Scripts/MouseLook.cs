@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
+    public static bool gameIsPaused = false;
+
+    [SerializeField] GameObject pauseMenu;
+
     [SerializeField] float sensitivity;
     [SerializeField] Transform playerBody;
 
@@ -11,6 +15,12 @@ public class MouseLook : MonoBehaviour
     float xRotation;
 
     private bool canRotate;
+
+
+    private void Awake()
+    {
+        gameIsPaused = false;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +43,52 @@ public class MouseLook : MonoBehaviour
             transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
             playerBody.Rotate(Vector3.up * mouseMovement.x);
         }
-        
+
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (gameIsPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
+
     }
+
+    public void OnChangeMouseSensitivity(float value)
+    {
+        sensitivity = value;
+    }
+
+
+    public void ResumeGame()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        canRotate = true;
+
+        //stop the game
+        Time.timeScale = 1f;
+        //enable canvas
+        pauseMenu.SetActive(false);
+        gameIsPaused = false;
+    }
+
+    public void PauseGame()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        canRotate = false;
+
+        //stop the game
+        Time.timeScale = 0f;
+        //enable canvas
+        pauseMenu.SetActive(true);
+        gameIsPaused = true;
+    }
+
 
     public void DeactivateCameraMovement()
     {
