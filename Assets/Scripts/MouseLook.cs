@@ -20,11 +20,6 @@ public class MouseLook : MonoBehaviour
     private void Awake()
     {
         gameIsPaused = false;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         Cursor.lockState = CursorLockMode.Locked;
         canRotate = true;
     }
