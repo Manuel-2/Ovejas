@@ -1566,6 +1566,7 @@ GameObject:
   - component: {fileID: 336083788}
   - component: {fileID: 336083791}
   - component: {fileID: 336083792}
+  - component: {fileID: 336083793}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1670,6 +1671,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &336083793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336083787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a999b0b8f460a449ea4767f9b3a7a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuName: MainMenu
 --- !u!1 &367848695
 GameObject:
   m_ObjectHideFlags: 0
@@ -2321,10 +2335,10 @@ RectTransform:
   m_Father: {fileID: 380750229}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
+  m_SizeDelta: {x: 2312.4656, y: 1300.8064}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461654545
 MonoBehaviour:
@@ -4294,6 +4308,10 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: -9018306384238406929, guid: 4e1f237e0eaa7cb4caff76e4d6e3b739, type: 2}
     value: {fileID: 336083792}
+  - key: {fileID: 5544181530580400280, guid: 4e1f237e0eaa7cb4caff76e4d6e3b739, type: 2}
+    value: {fileID: 1013118384}
+  - key: {fileID: 1164193198707226349, guid: 4e1f237e0eaa7cb4caff76e4d6e3b739, type: 2}
+    value: {fileID: 461654543}
   m_ExposedReferences:
     m_References: []
 --- !u!43 &1203108867
